@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    {{session}}
+    <h1>User name: {{session.email}}</h1>
+    <h3>List of confined spaces:</h3>
+    {% for space in spaces %}
+    <p>{{space.name}}</p>
+    {% endfor %}
+    <form action="/add_space">
+        <button>Add Space</button>
+    </form>
+    <form action="/logout" method="POST">
+        <button>Log out</button>
+    </form>
+</body>
+</html>
