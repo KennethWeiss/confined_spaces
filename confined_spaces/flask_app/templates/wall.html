@@ -13,7 +13,7 @@
     {% for space in spaces %}
     <p>{{space.name}}</p>
     {% endfor %}
-    <form action="/addspace" method="POST">
+    <form action="/addspace" method="GET">
         <button>Add Space</button>
     </form>
     <form action="/logout" method="POST">

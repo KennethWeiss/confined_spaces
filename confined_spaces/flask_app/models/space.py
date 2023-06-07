@@ -31,6 +31,15 @@ class Space:
             spaces.append(cls(space))
         return spaces
     
+    @classmethod
+    def create_space(cls, data):
+        query = """
+                INSERT INTO confined_spaces (name) 
+                VALUES (%(name)s);
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
+    
     @staticmethod
     def is_valid(user_dict):
         is_valid = True
