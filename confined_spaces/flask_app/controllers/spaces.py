@@ -4,6 +4,12 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 from flask_app.models import space
 
+@app.route("/displayspaces")
+def display_spaces():
+    print("Got here")
+    spaces = space.Space.get_spaces()
+    return render_template("display_spaces.html", spaces=spaces)
+
 @app.route("/userspaces")
 def display_user_spaces():
     spaces = space.Space.get_users_spaces()
