@@ -13,7 +13,7 @@ def display_spaces():
 @app.route("/userspaces")
 def display_user_spaces():
     spaces = space.Space.get_users_spaces()
-    return render_template("wall.html", spaces=spaces)
+    return render_template("user_spaces.html", spaces=spaces)
 
 @app.route("/addspace", methods=["GET"])
 def display_space():
