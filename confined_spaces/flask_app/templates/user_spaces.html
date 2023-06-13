@@ -3,7 +3,7 @@
 Your spaces
 {% endblock %}
 {% block body %}
-    <h1>User name: {{session.email}}</h1>
+    <h1>User name: {{session.name}}</h1>
     <h3>List of confined spaces:</h3>
     <div class="p-1">
     {% for space in spaces %}

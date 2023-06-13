@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    The Display Hazards 
+{% endblock %}
+{% block body %}
+<h1>All Hazards</h1>
+{% for hazard in hazards%}
+<p>{{hazard.name}}</p>
+<div>
+</div>
+{% endfor %}
+{% endblock %}
