@@ -38,3 +38,12 @@ def display_edit_space(id):
 @app.route("/editspace")
 def edit_space():
     return render_template("/edit_space.html")
+
+@app.route("/deletespace/<id>")
+def delete_space(id):
+    print("Before ididididididdididididididididididididididid"*10)
+    data = {"id":id}
+    print("Before call")
+    space.Space.delete_space(data)
+    print("After call")
+    return redirect("/displayspaces")

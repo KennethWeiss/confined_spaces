@@ -78,6 +78,17 @@ class Space:
         results = connectToMySQL(cls.db).query_db(query, data)
         return results
     
+    @classmethod
+    def delete_space(cls, data):
+        print("In call")
+        query = """
+                DELETE FROM confined_spaces
+                WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        print("After results")
+        return results
+    
     @staticmethod
     def is_valid(user_dict):
         is_valid = True

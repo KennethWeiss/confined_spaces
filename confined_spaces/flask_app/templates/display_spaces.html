@@ -6,5 +6,9 @@
 <h1>All confined spaces</h1>
 {% for space in spaces%}
 <p>{{space.name}}</p>
+<div>
+    <a href="/editspace/{{space.id}}">Edit</a>
+    <a href="/deletespace/{{space.id}}">Delete</a>
+</div>
 {% endfor %}
 {% endblock %}
