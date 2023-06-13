@@ -26,12 +26,9 @@ class Space:
     
     @classmethod
     def get_space(cls, id):
-        print("Got to method")
         data = {'id':id}
         query = "SELECT * from confined_spaces WHERE id = %(id)s;"
-        print("Getting results")
         results = connectToMySQL(cls.db).query_db(query, data)
-        print("Got results")
         return cls(results[0])
 
     @classmethod
@@ -40,7 +37,6 @@ class Space:
         results = connectToMySQL(cls.db).query_db(query)
         spaces = []
         for space in results:
-            print(space)
             spaces.append(cls(space))
         return spaces
 
@@ -80,13 +76,11 @@ class Space:
     
     @classmethod
     def delete_space(cls, data):
-        print("In call")
         query = """
                 DELETE FROM confined_spaces
                 WHERE id = %(id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query, data)
-        print("After results")
         return results
     
     @staticmethod

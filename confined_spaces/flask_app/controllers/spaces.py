@@ -6,7 +6,6 @@ from flask_app.models import space
 
 @app.route("/displayspaces")
 def display_spaces():
-    print("Got here")
     spaces = space.Space.get_spaces()
     return render_template("display_spaces.html", spaces=spaces)
 
@@ -32,7 +31,6 @@ def add_space():
 def display_edit_space(id):
     current_space = ""
     current_space = (space.Space.get_space(id))
-    print(current_space)
     return render_template("edit_space.html", current_space = current_space)
 
 @app.route("/editspace")
@@ -41,9 +39,6 @@ def edit_space():
 
 @app.route("/deletespace/<id>")
 def delete_space(id):
-    print("Before ididididididdididididididididididididididid"*10)
     data = {"id":id}
-    print("Before call")
     space.Space.delete_space(data)
-    print("After call")
     return redirect("/displayspaces")
