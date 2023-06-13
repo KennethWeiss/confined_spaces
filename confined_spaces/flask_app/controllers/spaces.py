@@ -30,7 +30,7 @@ def add_space():
 
 @app.route("/editspace/<id>")
 def display_edit_space(id):
-    
+    print(space.Space.get_space(id))
     return render_template("edit_space.html")
 
 @app.route("/editspace", methods=["POST"])

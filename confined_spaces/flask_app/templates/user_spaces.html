@@ -6,7 +6,7 @@ Your spaces
     <h1>User name: {{session.email}}</h1>
     <h3>List of confined spaces:</h3>
     {% for space in spaces %}
-    <p>{{space.name}}</p>
+    <p>{{space.id}} {{space.name}}</p>
     {% endfor %}
     <button><a href="/addspace"></a> Space</button>
     <button><a href="/displayspaces">All Spaces</a></button>

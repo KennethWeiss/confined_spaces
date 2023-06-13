@@ -17,14 +17,19 @@ class Space:
         return results
     
     @classmethod
+    def delete_space(cls, id):
+        data = {'id':id}
+        query = """
+                DELETE FROM confined_spaces WHERE id = %(id)s
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
     def get_space(cls, id):
+        data = {'id':id}
         query = "SELECT * from confined_spaces WHERE id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query)
-        spaces = []
-        for space in results:
-            print(space)
-            spaces.append(cls(space))
-        return spaces
+        return cls(results[0])
 
     @classmethod
     def get_spaces(cls):
