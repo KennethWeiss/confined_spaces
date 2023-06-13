@@ -9,9 +9,10 @@ Edit space
 
     <button>Submit</button>
 </form>
+<br>
 <form action="editspace" method="POST">
     <label for="name" class="form-label">Name: </label>
-    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    <input type="text" class="form-control" id="email" value="{{current_space.name}}">
     <label for="description" class="form-label">Example text area</label>
     <textarea class="form-control" id="description" rows="3"></textarea>
 </form>
