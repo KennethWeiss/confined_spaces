@@ -51,7 +51,7 @@ def success_display():
         return render_template("user_spaces.html")
     return "You are not logged in"
 
-@app.route("/logout", methods=["POST"])
+@app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("index"))
