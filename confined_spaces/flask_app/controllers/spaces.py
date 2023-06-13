@@ -26,12 +26,14 @@ def add_space():
     }
     space.Space.create_space(data)
     print("after sql")
-    return render_template("create_space.html")
+    return redirect("/displayspaces")
 
 @app.route("/editspace/<id>")
 def display_edit_space(id):
-    print(space.Space.get_space(id))
-    return render_template("edit_space.html")
+    current_space = ""
+    current_space = (space.Space.get_space(id))
+    print(current_space)
+    return render_template("edit_space.html", current_space = current_space)
 
 @app.route("/editspace")
 def edit_space():
