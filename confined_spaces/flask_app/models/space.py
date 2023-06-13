@@ -50,6 +50,16 @@ class Space:
         results = connectToMySQL(cls.db).query_db(query, data)
         return results
     
+    @classmethod
+    def edit_space(cls, data):
+        query = """
+                UPDATE confined_spaces
+                SET name = (%(name)s)
+                WHERE id = (%(id)s);
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
+    
     @staticmethod
     def is_valid(user_dict):
         is_valid = True
