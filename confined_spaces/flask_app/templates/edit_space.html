@@ -5,8 +5,15 @@ Edit space
 {% block body %}
 <h1>Edit Space</h1>
 <form action="editspace" method="POST">
+    <label for="name">Name: </label>
 
     <button>Submit</button>
+</form>
+<form action="editspace" method="POST">
+    <label for="name" class="form-label">Name: </label>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    <label for="description" class="form-label">Example text area</label>
+    <textarea class="form-control" id="description" rows="3"></textarea>
 </form>
 {% endblock %}
 <!-- <!DOCTYPE html>

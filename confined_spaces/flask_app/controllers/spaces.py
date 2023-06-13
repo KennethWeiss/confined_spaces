@@ -33,6 +33,6 @@ def display_edit_space(id):
     print(space.Space.get_space(id))
     return render_template("edit_space.html")
 
-@app.route("/editspace", methods=["POST"])
+@app.route("/editspace")
 def edit_space():
-    return redirect("/userspaces")
+    return render_template("/edit_space.html")

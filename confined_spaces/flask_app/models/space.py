@@ -26,9 +26,12 @@ class Space:
     
     @classmethod
     def get_space(cls, id):
+        print("Got to method")
         data = {'id':id}
         query = "SELECT * from confined_spaces WHERE id = %(id)s;"
-        results = connectToMySQL(cls.db).query_db(query)
+        print("Getting results")
+        results = connectToMySQL(cls.db).query_db(query, data)
+        print("Got results")
         return cls(results[0])
 
     @classmethod
