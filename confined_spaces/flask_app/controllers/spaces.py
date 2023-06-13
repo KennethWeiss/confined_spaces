@@ -27,3 +27,11 @@ def add_space():
     space.Space.create_space(data)
     print("after sql")
     return render_template("create_space.html")
+
+@app.route("/editspace")
+def display_edit_space():
+    return render_template("edit_space.html")
+
+@app.route("/editspace", methods=["POST"])
+def edit_space():
+    return redirect("/userspaces")

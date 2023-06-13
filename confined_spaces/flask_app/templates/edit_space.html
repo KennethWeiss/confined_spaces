@@ -1,18 +1,15 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}
-    Edit Space
+Edit space
 {% endblock %}
 {% block body %}
-<h1>Edit space</h1>
-{% for space in spaces%}
-<p>{{space.name}}</p>
-{% endfor %}
-<button><a href="/userspaces">Users Spaces</a></button>
-<button><a href="/addspace">Add Space</a></button>
-<button><a href="/logout">Logout</a></button>
-{% endblock %} -->
+<h1>Edit Space</h1>
+<form action="editspace" method="POST">
 
-<!DOCTYPE html>
+    <button>Submit</button>
+</form>
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +20,6 @@
     <title>Edit Space</title>
 </head>
 <body>
-    <h1>Edit Space</h1>
+    
 </body>
-</html>
+</html> -->
