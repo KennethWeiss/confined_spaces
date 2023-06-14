@@ -28,6 +28,7 @@ def login():
         "email": request.form["email"]
     }
     user_from_db = user.User.get_by_email(data)
+    session["id"] = user_from_db.id
     session["first_name"] = user_from_db.first_name
     session["last_name"] = user_from_db.last_name
     session["name"] = f"{user_from_db.first_name} {user_from_db.last_name}"

@@ -83,6 +83,24 @@ class Space:
         results = connectToMySQL(cls.db).query_db(query, data)
         return results
     
+    @classmethod
+    def add_hazard_to_space(cls, data):
+        query = """
+
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
+    
+    @classmethod
+    def add_space_to_user(cls, data):
+        query = """
+                INSERT INTO users_has_confined_spaces
+                (confined_space_id, user_id)
+                VALUES (%(space_id)s, %(user_id)s)
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results 
+
     @staticmethod
     def is_valid(user_dict):
         is_valid = True

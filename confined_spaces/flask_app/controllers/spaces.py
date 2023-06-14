@@ -54,3 +54,13 @@ def delete_space(id):
     data = {"id":id}
     space.Space.delete_space(data)
     return redirect("/displayspaces")
+
+@app.route("/addspacetouser/<space_id>")
+def add_space_to_user(space_id):
+    print(session)
+    data = {
+            'space_id':space_id,
+            'user_id':session['id']
+            }
+    space.Space.add_space_to_user(data)
+    return redirect("/userspaces")
