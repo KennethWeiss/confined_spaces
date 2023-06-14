@@ -21,4 +21,12 @@ def create_hazard():
         "description" : request.form['description']
     }
     hazard.Hazard.create_hazard(data)
-    return render_template("create_hazard.html")
+    return redirect("/displayhazards")
+
+@app.route("/deletehazard/<id>")
+def delete_hazard(id):
+    data = {
+            "id" : id
+    }
+    hazard.Hazard.delete_hazard(data)
+    return redirect("/displayhazards")

@@ -24,3 +24,9 @@ class Hazard:
         query = "INSERT INTO hazards (name, description) VALUE (%(name)s, %(description)s);"
         results = connectToMySQL(cls.db).query_db(query, data)
         return results
+    
+    @classmethod
+    def delete_hazard(cls, data):
+        query = "DELETE FROM hazards WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results

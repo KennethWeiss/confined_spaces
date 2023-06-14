@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}
-    The Display Hazards 
+The Display Hazards 
 {% endblock %}
 {% block body %}
 <h1>All Hazards</h1>
+<span>
+    <button><a href="/createhazard">Create</a></button>
+</span>
 {% for hazard in hazards%}
 <p>{{hazard.name}}</p>
-<div>
-</div>
+<a href="/deletehazard/{{hazard.id}}">Delete</a>
+<a href="/add_hazard_to_user">Add to user</a>
 {% endfor %}
 {% endblock %}
