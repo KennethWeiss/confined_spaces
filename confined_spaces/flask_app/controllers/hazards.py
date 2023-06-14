@@ -9,3 +9,16 @@ def display_hazards():
     hazards = hazard.Hazard.get_hazards()
     print(hazards)
     return render_template("display_hazards.html", hazards=hazards)
+
+@app.route("/createhazard")
+def display_create_hazard():
+    return render_template("create_hazard.html")
+
+@app.route("/createhazard", methods=["POST"])
+def create_hazard():
+    data = {
+        "name" : request.form['name'],
+        "description" : request.form['description']
+    }
+    hazard.Hazard.create_hazard(data)
+    return render_template("create_hazard.html")

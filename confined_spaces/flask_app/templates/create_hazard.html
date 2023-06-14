@@ -4,9 +4,10 @@ Create Hazard
 {% endblock %}
 {% block body %}
     <h1>Create Hazard:</h1>
-    <form action="create_hazard" method="POST">
+    <form action="/createhazard" method="POST">
         <label for="name">Name:</label>
         <input type="text" name="name">
+        
         <label for="description">Description:</label>
         <textarea name="description" id="description" cols="30" rows="10">Enter description here.</textarea>
         <button>Submit</button>

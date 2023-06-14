@@ -18,3 +18,9 @@ class Hazard:
         for hazard in results:
             hazards.append(cls(hazard))
         return hazards
+    
+    @classmethod
+    def create_hazard(cls, data):
+        query = "INSERT INTO hazards (name, description) VALUE (%(name)s, %(description)s);"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
