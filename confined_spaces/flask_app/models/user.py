@@ -55,11 +55,8 @@ class User:
         is_valid = True
         if len(user_dict["email"]) < 2:
             is_valid = False
-            flash("Email should have at least 2 characters")
+            flash("Email should have at least 2 characters", "login")
         if len(user_dict["password"]) < 2:
             is_valid = False
-            flash("Password should have at least 2 characters")
-        # if user_dict["password_confirmation"] != user_dict["password"]:
-        #     is_valid = False
-        #     flash("Password must match password confirmation")
+            flash("Password should have at least 2 characters", "login")
         return is_valid 

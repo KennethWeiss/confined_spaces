@@ -13,9 +13,9 @@ def display_spaces():
 def display_user_spaces():
     print(session)
     print("new session")
-    data = {"email":session['email']}
+    data = {"email":session['email'], "id":session['id']}
     print(session)
-    spaces = space.Space.get_users_spaces()
+    spaces = space.Space.get_users_spaces(data)
     return render_template("user_spaces.html", spaces=spaces)
 
 @app.route("/addspace", methods=["GET"])
@@ -55,6 +55,15 @@ def delete_space(id):
     space.Space.delete_space(data)
     return redirect("/displayspaces")
 
+@app.route("/deletespacefromuser/<id>")
+def delete_space_from_user(id):
+    data = {
+            "id":session['id'],
+            "space_id":id
+            }
+    space.Space.delete_space_from_user(data)
+    return redirect("/userspaces")
+
 @app.route("/addspacetouser/<space_id>")
 def add_space_to_user(space_id):
     print(session)
@@ -63,4 +72,5 @@ def add_space_to_user(space_id):
             'user_id':session['id']
             }
     space.Space.add_space_to_user(data)
+    print(session)
     return redirect("/userspaces")

@@ -41,15 +41,16 @@ class Space:
         return spaces
 
     @classmethod
-    def get_users_spaces(cls):
+    def get_users_spaces(cls, data):
         query = """
                 SELECT confined_spaces.id, confined_spaces.name, confined_spaces.created_at, confined_spaces.updated_at FROM confined_spaces.confined_spaces
                 JOIN confined_spaces.users_has_confined_spaces
                 ON confined_spaces.confined_spaces.id = users_has_confined_spaces.confined_space_id
                 JOIN users
-                ON users_has_confined_spaces.user_id = users.id;
+                ON users_has_confined_spaces.user_id = users.id
+                WHERE users.id = %(id)s;
                 """
-        results = connectToMySQL(cls.db).query_db(query)
+        results = connectToMySQL(cls.db).query_db(query, data)
         spaces = []
         for space in results:
             spaces.append(cls(space))
@@ -77,12 +78,26 @@ class Space:
     @classmethod
     def delete_space(cls, data):
         query = """
+                DELETE FROM users_has_confined_spaces 
+                WHERE confined_space_id=%(id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        query = """
                 DELETE FROM confined_spaces
                 WHERE id = %(id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query, data)
         return results
     
+    @classmethod
+    def delete_space_from_user(cls, data):
+        query = """
+                    DELETE FROM confined_spaces.users_has_confined_spaces 
+                    WHERE user_id=%(id)s and confined_space_id=%(space_id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
+
     @classmethod
     def add_hazard_to_space(cls, data):
         query = """
