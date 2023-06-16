@@ -6,16 +6,22 @@ from flask_app.models import space, user, hazard
 
 @app.route("/displayhazards")
 def display_hazards():
+    if session.get('logged_in') == None:
+        return redirect("/")
     hazards = hazard.Hazard.get_hazards()
     print(hazards)
     return render_template("display_hazards.html", hazards=hazards)
 
 @app.route("/createhazard")
 def display_create_hazard():
+    if session.get('logged_in') == None:
+        return redirect("/")
     return render_template("create_hazard.html")
 
 @app.route("/createhazard", methods=["POST"])
 def create_hazard():
+    if session.get('logged_in') == None:
+        return redirect("/")
     data = {
         "name" : request.form['name'],
         "description" : request.form['description']
@@ -25,6 +31,8 @@ def create_hazard():
 
 @app.route("/deletehazard/<id>")
 def delete_hazard(id):
+    if session.get('logged_in') == None:
+        return redirect("/")
     data = {
             "id" : id
     }
