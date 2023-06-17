@@ -7,9 +7,9 @@
 {% for space in spaces%}
 <p>{{space.name}}</p>
 <div>
-    <a href="/editspace/{{space.id}}">Edit</a>
-    <a href="/deletespace/{{space.id}}">Delete</a>
-    <a href="/addspacetouser/{{space.id}}">Add Space to User</a>
+    <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
+    <button class="rounded"><a href="/deletespace/{{space.id}}">Delete</a></button>
+    <button class="rounded"><a href="/addspacetouser/{{space.id}}">Add Space to User</a></button>
 </div>
 {% endfor %}
 {% endblock %}

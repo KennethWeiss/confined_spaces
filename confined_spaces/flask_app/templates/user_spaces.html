@@ -10,8 +10,8 @@ Your spaces
         <div class="m-3">
             {{space.id}} {{space.name}}
             <div>
-                <a href="/editspace/{{space.id}}">Edit</a>
-                <a href="/deletespacefromuser/{{space.id}}">Delete</a>
+                <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
+                <button class="rounded"><a href="/deletespacefromuser/{{space.id}}">Delete</a></button>
             </div>
         </div>
         {% endfor %}

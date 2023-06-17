@@ -9,11 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="session border">
+    <div class="mt-5">
         <!-- {{session}} -->
     </div>
     <div class="display row">
-        <div class="container col-5 border border-dark">
+        <div class="container col-5 p-5">
             <h1>Register</h1>
             <div class="form">
                 <form action="/register" method="POST">
@@ -25,32 +25,32 @@
                     {% endif %}
                     {% endwith %}
                     <div>
-                        <label for="first_name">First name: </label>
-                        <input type="text" name="first_name">
+                        <label for="first_name" class="form-label"></label>
+                        <input type="text" class="form-control form-control-lg" name="first_name" placeholder="First Name">
                     </div>
                     <div>
-                        <label for="last_name">Last name: </label>
-                        <input type="text" name="last_name">
+                        <label for="last_name" class="form-label"></label>
+                        <input type="text" class="form-control form-control-lg" name="last_name" placeholder="Last Name">
                     </div>
                     <div>
-                        <label for="email">Email: </label>
-                        <input type="email" name="email">
+                        <label for="email" class="form-label"></label>
+                        <input type="email" class="form-control form-control-lg" name="email" placeholder="Email">
                     </div>
                     <div>
-                        <label for="password">Password: </label>
-                        <input type="password" name="password">
+                        <label for="password" class="form-label"></label>
+                        <input type="password" class="form-control form-control-lg" name="password" placeholder="Password">
                     </div>
                     <div>
-                        <label for="password_confirmation">Confirm Password: </label>
-                        <input type="password" name="password_confirmation">
+                        <label for="password_confirmation" class="form-label"></label>
+                        <input type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Confirm Password">
                     </div>
                     <div>
-                        <button>Register</button>
+                        <button class="btn btn-primary btn-lg btn-block mt-3">Register</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="container col-5 border border-dark">
+        <div class="container col-5 pt-5">
             <h1>Login</h1>
             <form action="/login" method="POST">
                 {% with messages = get_flashed_messages(category_filter=["login"])%}
@@ -61,17 +61,18 @@
                 {% endif %}
                 {% endwith %}
                 <div>
-                    <label for="email">Email: </label>
-                    <input type="email" name="email">
+                    <label for="email" class="form-label"></label>
+                    <input type="email" class="form-control form-control-lg" name="email" placeholder="Email">
                 </div>
                 <div>
-                    <label for="password">Password: </label>
-                    <input type="password" name="password">
+                    <label for="password" class="form-label"> </label>
+                    <input type="password" name="password" class="form-control form-control-lg" name="email" placeholder="Password">
                 </div>
                 <div>
-                    <button>Login</button>
+                    <button class="btn btn-primary btn-lg btn-block mt-3" >Login</button>
                 </div>
             </form>
+            
         </div>
     </div>
 </body>
