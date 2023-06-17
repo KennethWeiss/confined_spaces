@@ -1,3 +1,9 @@
-.button {
-    border-radius: 20px;
+button {
+    border-radius: 4px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+
 }

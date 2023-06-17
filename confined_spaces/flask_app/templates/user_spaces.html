@@ -8,10 +8,10 @@ Your spaces
     <div class="p-1">
     {% for space in spaces %}
         <div class="m-3">
-            {{space.id}} {{space.name}}
+            {{space.name}}
             <div>
-                <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
-                <button class="rounded"><a href="/deletespacefromuser/{{space.id}}">Delete</a></button>
+                <button class="button"><a href="/editspace/{{space.id}}">Edit</a></button>
+                <button class="button"><a href="/deletespacefromuser/{{space.id}}">Delete</a></button>
             </div>
         </div>
         {% endfor %}

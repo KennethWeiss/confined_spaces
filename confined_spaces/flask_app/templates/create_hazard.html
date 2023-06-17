@@ -5,6 +5,13 @@ Create Hazard
 {% block body %}
     <h1>Create Hazard:</h1>
     <form action="/createhazard" method="POST">
+        {% with messages = get_flashed_messages(category_filter=["create_space"])%}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <label for="name">Name:</label>
         <input type="text" name="name">
         

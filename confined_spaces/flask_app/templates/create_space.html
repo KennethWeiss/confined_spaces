@@ -9,8 +9,16 @@ Create Space
 
     <h1>Create new space:</h1>
     <form action="create_space" method="POST">
+        {% with messages = get_flashed_messages(category_filter=["registration"])%}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <label for="name">Name:</label>
         <input type="text" name="name">
-        <button>Submit</button>
+        <button class="rounded">Submit</button>
     </form>
 {% endblock %}
+>>
