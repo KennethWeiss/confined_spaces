@@ -2,7 +2,7 @@ button {
     border-radius: 4px;
 }
 
-a:link, a:visited {
+button a:link, button a:visited {
     text-decoration: none;
     color: black;
 

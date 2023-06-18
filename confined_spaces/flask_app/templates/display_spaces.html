@@ -5,15 +5,10 @@
 {% block body %}
 <h1>All confined spaces</h1>
 {% for space in spaces%}
-<p>{{space.name}}</p>
-
-<div>
-    <button class="rounded"><a href="/displayspace/{{space.id}}">View</a></button>
-    <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
-    <button class="rounded"><a href="/deletespace/{{space.id}}">Delete</a></button>
-    <button class="rounded"><a href="/addspacetouser/{{space.id}}">Add Space to User</a></button>
-</div>
+<b><p><a href="/displayspace/{{space.id}}">{{space.name}}</a></p></b>
+<div class="m-3">
     <form action="/addhazardtospace" method="POST">
+        <label for="hazard_id">Add hazard:</label><br>
         <select name="hazard_id">
             {% for hazard in hazards%}
             <option value ="{{hazard.id}}">{{hazard.name}}</option>
@@ -22,5 +17,13 @@
         <input type="hidden" name="space_id" value="{{space.id}}"/>
         <button>Submit</button>
     </form>
+    <div>
+        <button class="rounded"><a href="/displayspace/{{space.id}}">View</a></button>
+        <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
+        <button class="rounded"><a href="/deletespace/{{space.id}}">Delete</a></button>
+        <button class="rounded"><a href="/addspacetouser/{{space.id}}">Add Space to User</a></button>
+    </div>
+</div>
+
 {% endfor %}
 {% endblock %}
