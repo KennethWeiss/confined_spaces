@@ -9,7 +9,7 @@ Create Space
 
     <h1>Create new space:</h1>
     <form action="create_space" method="POST">
-        {% with messages = get_flashed_messages(category_filter=["registration"])%}
+        {% with messages = get_flashed_messages(category_filter=["space"])%}
             {% if messages %}
                 {% for message in messages %}
                     <p>{{message}}</p>

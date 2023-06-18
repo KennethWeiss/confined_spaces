@@ -6,6 +6,13 @@ Edit space
 <h1>Edit Space</h1>
 
 <form action="editspace/{{current_space.id}}" method="POST">
+    {% with messages = get_flashed_messages(category_filter=["space"])%}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <div class="form-group row">
         <label for="name" class="col-sm-1 col-form-label">Name: </label>
         <div class="col-sm-8">

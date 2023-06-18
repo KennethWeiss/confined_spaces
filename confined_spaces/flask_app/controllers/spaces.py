@@ -34,6 +34,8 @@ def display_space():
 def add_space():
     if session.get('logged_in') == None:
         return redirect("/")
+    if not space.Space.create_space_valid(request.form):
+        return redirect(url_for("display_space"))
     data = {
         "name" : request.form["name"]
     }
@@ -45,7 +47,6 @@ def add_space():
 def display_edit_space(id):
     if session.get('logged_in') == None:
         return redirect("/")
-    print("displaying edit space")
     current_space = ""
     current_space = (space.Space.get_space(id))
     return render_template("edit_space.html", current_space = current_space)
@@ -54,7 +55,8 @@ def display_edit_space(id):
 def edit_space(id):
     if session.get('logged_in') == None:
         return redirect("/")
-    print("Editing Space")
+    if not space.Space.create_space_valid(request.form):
+        return redirect(f"/editspace/{id}")
     name = request.form['name']
     data = {
             "id":id,
