@@ -29,6 +29,15 @@ def create_hazard():
     hazard.Hazard.create_hazard(data)
     return redirect("/displayhazards")
 
+@app.route("/addhazardtospace", methods=["POST"])
+def add_hazard_to_route():
+    data = {
+            "hazard_id": request.form['hazard_id'],
+            "confined_space_id": request.form['space_id']
+            }
+    hazard.Hazard.add_hazard_to_space(data)
+    return redirect("/displayspaces")
+
 @app.route("/deletehazard/<id>")
 def delete_hazard(id):
     if session.get('logged_in') == None:

@@ -2,30 +2,36 @@ from flask_app import app
 from flask import render_template, redirect, request, url_for, session, flash
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
-from flask_app.models import space, user
+from flask_app.models import space, user, hazard
 
 @app.route("/displayspaces")
 def display_spaces():
     if session.get('logged_in') == True:
         spaces = space.Space.get_spaces()
-        return render_template("display_spaces.html", spaces=spaces)
+        hazards = hazard.Hazard.get_hazards()
+        return render_template("display_spaces.html", spaces=spaces, hazards=hazards)
     else:
         return redirect("/")
-
 
 @app.route("/userspaces")
 def display_user_spaces():
     if session.get('logged_in') == None:
         return redirect("/")
-    print(session)
-    print("new session")
     data = {"email":session['email'], "id":session['id']}
-    print(session)
     spaces = space.Space.get_users_spaces(data)
     return render_template("user_spaces.html", spaces=spaces)
 
+@app.route("/displayspace/<id>")
+def display_space(id):
+    if session.get('logged_in') == None:
+        return redirect("/")
+    one_space = space.Space.get_space(id)
+    hazards = hazard.Hazard.space_hazards(id)
+    print(one_space.name)
+    return render_template("display_space.html", one_space=one_space, hazards=hazards)
+
 @app.route("/addspace", methods=["GET"])
-def display_space():
+def display_add_space():
     if session.get('logged_in') == None:
         return redirect("/")
     return render_template("create_space.html")
@@ -35,7 +41,7 @@ def add_space():
     if session.get('logged_in') == None:
         return redirect("/")
     if not space.Space.create_space_valid(request.form):
-        return redirect(url_for("display_space"))
+        return redirect(url_for("display_add_space"))
     data = {
         "name" : request.form["name"]
     }
@@ -88,11 +94,9 @@ def delete_space_from_user(id):
 def add_space_to_user(space_id):
     if session.get('logged_in') == None:
         return redirect("/")
-    print(session)
     data = {
             'space_id':space_id,
             'user_id':session['id']
             }
     space.Space.add_space_to_user(data)
-    print(session)
     return redirect("/userspaces")

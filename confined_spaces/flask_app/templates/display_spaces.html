@@ -6,10 +6,21 @@
 <h1>All confined spaces</h1>
 {% for space in spaces%}
 <p>{{space.name}}</p>
+
 <div>
+    <button class="rounded"><a href="/displayspace/{{space.id}}">View</a></button>
     <button class="rounded"><a href="/editspace/{{space.id}}">Edit</a></button>
     <button class="rounded"><a href="/deletespace/{{space.id}}">Delete</a></button>
     <button class="rounded"><a href="/addspacetouser/{{space.id}}">Add Space to User</a></button>
 </div>
+    <form action="/addhazardtospace" method="POST">
+        <select name="hazard_id">
+            {% for hazard in hazards%}
+            <option value ="{{hazard.id}}">{{hazard.name}}</option>
+            {% endfor %}
+        </select> 
+        <input type="hidden" name="space_id" value="{{space.id}}"/>
+        <button>Submit</button>
+    </form>
 {% endfor %}
 {% endblock %}

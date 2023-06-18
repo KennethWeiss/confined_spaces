@@ -14,11 +14,11 @@ The Display Hazards
             {{hazard.name}} - {{hazard.description}}    
         </td>
         <td>
-            <a href="/deletehazard/{{hazard.id}}">Delete</a>
+            <button><a href="/deletehazard/{{hazard.id}}">Delete</a></button>
         </td>
-        <td>
+        <!-- <td>
             <button><a href="/add_hazard_to_user">Add to space</a></button>
-        </td>
+        </td> -->
     </tr>
     {% endfor %}
 </table>

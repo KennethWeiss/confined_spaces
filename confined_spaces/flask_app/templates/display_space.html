@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    The Display Spaces
+{% endblock %}
+{% block body %}
+<h1>{{one_space.name}}</h1>
+{%for hazard in hazards%}
+<dl>
+    <dt>{{hazard.name}}</dt>
+    <dd>{{hazard.description}}</dd>
+</dl>
+{% endfor %}
+<div>
+    <button class="rounded"><a href="/editspace/{{one_space.id}}">Edit</a></button>
+    <button class="rounded"><a href="/deletespace/{{one_space.id}}">Delete</a></button>
+    <button class="rounded"><a href="/addspacetouser/{{one_space.id}}">Add Space to User</a></button>
+</div>
+    <form action="/addhazardtospace" method="POST">
+        <select name="hazard_id">
+            {% for hazard in hazards%}
+            <option value ="{{hazard.id}}">{{hazard.name}}</option>
+            {% endfor %}
+        </select> 
+        <input type="hidden" name="space_id" value="{{one_space.id}}"/>
+        <button>Submit</button>
+    </form>
+
+{% endblock %}
