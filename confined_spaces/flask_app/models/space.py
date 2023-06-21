@@ -123,3 +123,4 @@ class Space:
             is_valid = False
             flash("Name should have at least 2 characters", "space")
         return is_valid
+    
